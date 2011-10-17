@@ -39,15 +39,15 @@ You can use this library by subclassing from the mgrid::LinearMultigrid class. Y
 
 ...which would give you a finite difference approximation to the second derivative in the x and z directions respectively. These finite differences also take the location of the point into account, so if you're near a boundary they will automatically use forward or backward differences as required.
 
-For example, to solve the Poisson equation for a solution u_{h} on a grid with spacing h = (hx, hz), with a source term f_{h}, we have the following differential operator:
+For example, to solve the Poisson equation for a solution u_h on a grid with spacing h = (hx, hz), with a source term f_h, we have the following differential operator:
 
-L(u_{h}) = d^2u/dx^2 + d^2u/dz^2
+L(u_h) = d^2u/dx^2 + d^2u/dz^2
 
 and the following Gauss-Seidel update step as a smoother:
 
-S(u_{h}) = u_{h}(i+1, j)((u_{h}(i+1, j) + u_{h}(i-1, j))*/(hx^2)
-        + (u_{h}(i, j+1) + u_{h}(i, j-1))/(hz^2) 
-        - f_{h}(i, j))/(2*(hx + hz))
+S(u_h) = u_h(i+1, j)((u_h(i+1, j) + u_h(i-1, j))*/(hx^2)
+        + (u_h(i, j+1) + u_h(i, j-1))/(hz^2) 
+        - f_h(i, j))/(2*(hx + hz))
 
 These are implemented in the Poisson example as
 
@@ -67,7 +67,12 @@ These are implemented in the Poisson example as
 
 As you can see, you can get the spacing size from the current level of the solution. The solution and source arrays are stored as attributes containing vectors of grids, arranged from fine to coarse, and are called `solution` and `source` respectively. You shouldn't need to bother with the order too much, just pass the supplied level through.
 
-The source term is automatically moved between grids using the same restriction/prolongation operators as used for the solutions. To make it wasier to specify initial conditions and a source term, the mgrid::LinearMultigrid class also contains finestLevel and coarsestLevel attributes, with the index of the finest and coarsest grid level respectively.
+The source term is automatically moved between grids using the same restriction/prolongation operators as used for the solutions. To make it wasier to specify initial conditions and a source term, the mgrid::LinearMultigrid class also contains finestLevel and coarsestLevel attributes, with the index of the finest and coarsest grid level respectively. You can just specify an array which gives the source function during construction of the class - everything that works to set the values in a Blitz array will work here. Here's how the Poisson example does it:
+
+    source[finestLevel] = -1.0; 
+    sourceIsSet = true;   
+
+... the sourceIsSet attribute lets the class know you've specified this parameter.
 
 
 
