@@ -5,3 +5,8 @@
 /install_manifest.txt
 /libmultigrid.a
 /Makefile
+/poisson_example/cmake_install.cmake
+/poisson_example/CMakeCache.txt
+/poisson_example/CMakeFiles/
+/poisson_example/Makefile
+/poisson_example/poisson
