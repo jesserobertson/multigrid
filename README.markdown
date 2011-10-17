@@ -4,8 +4,6 @@ Date: 17 October 2011
 URL: http://github.com/jess-robertson/multigrid
 Email: my name with domain anu.edu.au
 
-README:
-
 This is a multigrid solver for solving elliptic PDEs using finite differences on a rectangular grid. It uses red-black updating with a user-specified smoother and fully weighted restriction/bilinear interpolation for solution transfer between grids. These are implemented as methods of a solver class (mgrid::LinearMultigrid) so that you don't have to specify too much to get the solver running.
 
 Unfortunately there isn't much in the way of documentation other than this README but you can have a look at the two examples and get the general idea of what's going on.
@@ -17,11 +15,9 @@ I'm releasing this under the the Community Research and Academic Programming Lic
 Installing
 ----------
 
-You'll need to install cmake, and the Boost and Blitz++ libraries to compile the multigrid library ([Boost homepage](www.boost.org/), [Blitz++ homepage](http://www.oonumerics.org/blitz/)). On a Mac the easiest thing to do is use Homebrew ([get it here](http://mxcl.github.com/homebrew/), so that this can be done in one hit with the command `brew install cmake boost blitz`.
+You'll need to install cmake, and the Boost and Blitz++ libraries to compile the multigrid library ([Boost homepage](www.boost.org/), [Blitz++ homepage](http://www.oonumerics.org/blitz/)). On a Mac the easiest thing to do is use Homebrew ([get it here](http://mxcl.github.com/homebrew/)), so that this can be done in one hit with the command `brew install cmake boost blitz`.
 
-Once you've installed these dependencies, you can go to the root folder (where this README is located) and run `cmake . && make install`.
-
-...this should put the library and headers under /usr/local. Feel free to modify the install directory in the CMakeLists.txt file if you want it to go somewhere else.
+Once you've installed these dependencies, you can go to the root folder (where this README is located) and run `cmake . && make install`. This should put the library and headers under `/usr/local`. Feel free to modify the install directory in the CMakeLists.txt file if you want it to go somewhere else.
 
 When building your own script, you can also use the CMake files that are included in the two example directories. These should find the multigrid library and link it into your own executable.
 
