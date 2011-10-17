@@ -14,7 +14,7 @@ void mgrid::FDBase::calculate_geometry(const double aspectRatio, const int nx, c
     (*this).nz = nz;                      
     
     // Calculate spacings
-    hx = aspectRatio/double(2*(nx-1));      
+    hx = aspectRatio/double(nx-1);      
     hz = 1/double(nz-1); 
     
     // Pre-calculate factors for derivatives   

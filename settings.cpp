@@ -6,7 +6,7 @@
 #include "settings.hpp"
 
 // Default settings for Settings  
-static const double           defaultAspectRatio             = 2;   
+static const double           defaultAspectRatio             = 1;   
 static const int              defaultMaximumIterations       = 400;  
 static const mgrid::CycleType defaultMgCycleType             = mgrid::wCycle; 
 static const int              defaultMinimimumResolution     = 4;   
