@@ -12,12 +12,18 @@ Unfortunately there isn't much in the way of documentation other than this READM
 
 I'm releasing this under the the Community Research and Academic Programming License (CRAPL: see http://matt.might.net/articles/crapl/ for details). Hopefully things'll work as advertised but if you have any problems then drop me a line and we'll see if we can fix them.
 
+
+
 Installing
 ----------
 
 You'll need to install cmake, and the boost and blitz libraries to compile the multigrid library. On a Mac the easiest thing to do is use Homebrew (), so that this can be done in one hit with the command `brew install cmake boost blitz`.
 
-Once you've installed these dependencies, you can go to the root folder (where this README is located) and run `cmake . && make install` - this should put the library and headers under /usr/local. Feel free to modify the install directory in the CMakeLists.txt file if you want it to go somewhere else.
+Once you've installed these dependencies, you can go to the root folder (where this README is located) and run 
+
+	cmake . && make install 
+
+...this should put the library and headers under /usr/local. Feel free to modify the install directory in the CMakeLists.txt file if you want it to go somewhere else.
 
 When building your own script, you can also use the CMake files that are included in the two example directories. These should find the multigrid library and link it into your own executable.
 
@@ -28,8 +34,8 @@ Specifying your own elliptic PDEs
 
 You can use this library by subclassing from the mgrid::LinearMultigrid class. You need to specify a differential operator, and a smoothing operator which will be specific to your given PDE. These functions are given a multigrid level, and i and j indexes which they can use to calculate the smoothing step. To make specifying these things easier, the solution attribute also implements finite differences of the specified order in the form:
 
-solution[level].dxx(i, j)
-solution[level].dzz(i, j)
+	solution[level].dxx(i, j)
+	solution[level].dzz(i, j)
 
 ...which would give you a finite difference approximation to the second derivative in the x and z directions respectively. These finite differences also take the location of the point into account, so if you're near a boundary they will automatically use forward or backward differences as required.
 
@@ -45,19 +51,19 @@ S(u_{h}) = u_{h}(i+1, j)((u_{h}(i+1, j) + u_{h}(i-1, j))*/(hx^2)
 
 These are implemented in the Poisson example as
 
-inline double differential_operator(mgrid::Level level, int i, int j) {
-    return solution[level].dxx(i, j) + solution[level].dzz(i, j);
-};
-inline void Poisson::relaxation_updater(mgrid::Level level, int i, int j) { 
-    const double hx = solution[level].spacing(0);
-    const double hz = solution[level].spacing(1);
-    const double xxfactor = 1/(hx*hx);
-    const double zzfactor = 1/(hz*hz);
-    solution[level](i, j) = 
-        ((solution[level](i+1, j) + solution[level](i-1, j))*xxfactor
-        + (solution[level](i, j+1) + solution[level](i, j-1))*zzfactor 
-        - source[level](i, j))/(2*(xxfactor + zzfactor));
-};
+	inline double differential_operator(mgrid::Level level, int i, int j) {
+	    return solution[level].dxx(i, j) + solution[level].dzz(i, j);
+	};
+	inline void Poisson::relaxation_updater(mgrid::Level level, int i, int j) { 
+	    const double hx = solution[level].spacing(0);
+	    const double hz = solution[level].spacing(1);
+	    const double xxfactor = 1/(hx*hx);
+	    const double zzfactor = 1/(hz*hz);
+	    solution[level](i, j) = 
+	        ((solution[level](i+1, j) + solution[level](i-1, j))*xxfactor
+	        + (solution[level](i, j+1) + solution[level](i, j-1))*zzfactor 
+	        - source[level](i, j))/(2*(xxfactor + zzfactor));
+	};
 
 As you can see, you can get the spacing size from the current level of the solution. The solution and source arrays are stored as attributes containing vectors of grids, arranged from fine to coarse, and are called `solution` and `source` respectively. You shouldn't need to bother with the order too much, just pass the supplied level through.
 
@@ -72,15 +78,15 @@ Boundary conditions can be set in the initialisation routine of your solver clas
 
 Here's how it's done for the Poisson example, with two homogeneous Dirichlet and two Neumann conditions
 
-// Set boundary conditions for velocity array 
-solution.boundaryConditions.set(mgrid::leftBoundary,   mgrid::zeroNeumannCondition);
-solution.boundaryConditions.set(mgrid::rightBoundary,  mgrid::zeroDirichletCondition);
-solution.boundaryConditions.set(mgrid::topBoundary,    mgrid::zeroNeumannCondition);    
-solution.boundaryConditions.set(mgrid::bottomBoundary, mgrid::zeroDirichletCondition); 
+	// Set boundary conditions for velocity array 
+	solution.boundaryConditions.set(mgrid::leftBoundary,   mgrid::zeroNeumannCondition);
+	solution.boundaryConditions.set(mgrid::rightBoundary,  mgrid::zeroDirichletCondition);
+	solution.boundaryConditions.set(mgrid::topBoundary,    mgrid::zeroNeumannCondition);    
+	solution.boundaryConditions.set(mgrid::bottomBoundary, mgrid::zeroDirichletCondition); 
 
 If your conditions are not homogeneous, you can specify a value using the BoundaryPoint class. For example, the conditions above were specified as:
 
-const mgrid::BoundaryPoint zeroDirichletCondition = { mgrid::dirichlet, 0.0 };
+	const mgrid::BoundaryPoint zeroDirichletCondition = { mgrid::dirichlet, 0.0 };
 
 A one-dimensional blitz array of BoundaryPoints makes an instance of mgrid::Boundary - you can also pass one of these to mgrid::BoundaryConditions::set to set the boundary conditions.
 
@@ -91,16 +97,16 @@ Specifying solver settings
 
 Most of the settings are fairly self-explanatory:
 
-struct Settings { 
-    double aspectRatio; 			# Aspect ratio of the grids
-    int numberOfGrids; 				# Total number of grids
-    int minimumResolution;			# Resolution on the coarsest grid
-    double residualTolerance;		# Stopping tolerance for solver
-    int maximumIterations;			# Maximum allowable iterations for the solver
-    CycleType mgCycleType;			# Either mgrid::wCycle or mgrid::vCycle
-    unsigned long preMGRelaxIter;	# Number of relaxation iterations on way down
-    unsigned long postMGRelaxIter;	# Number of relaxation iterations on way back up
-};
+	struct Settings { 
+	    double aspectRatio; 			# Aspect ratio of the grids
+	    int numberOfGrids; 				# Total number of grids
+	    int minimumResolution;			# Resolution on the coarsest grid
+	    double residualTolerance;		# Stopping tolerance for solver
+	    int maximumIterations;			# Maximum allowable iterations for the solver
+	    CycleType mgCycleType;			# Either mgrid::wCycle or mgrid::vCycle
+	    unsigned long preMGRelaxIter;	# Number of relaxation iterations on way down
+	    unsigned long postMGRelaxIter;	# Number of relaxation iterations on way back up
+	};
 
 ...although a couple need a bit more explanation. The library will work out all the grid sizes based on your minimum grid size and the total number of grids by simply doubling the resolution in both the x and z direction with each grid. 
 
