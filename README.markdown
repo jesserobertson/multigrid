@@ -119,7 +119,7 @@ I'm releasing this code for academic use under the [Community Research and Acade
 >
 > The Author reserves all rights to the Program, except for any rights granted under any additional licenses attached to the Program.
 
-Basically I'm pretty happy to let you use the data and Python scripts for non-commercial/academic/research use, provided you cite this paper when/if you publish your work. However, if this is too restrictive for you then drop me a line and we can have a chat.
+Basically I'm pretty happy to let you use this code for non-commercial/academic/research use, provided you cite my work when/if you publish your work. However, if this is too restrictive for you then drop me a line and we can have a chat.
 
 [41]: http://matt.might.net/articles/crapl/ "CRAPL license page"     
 [42]: CRAPL_license.html "CRAPL license text"
