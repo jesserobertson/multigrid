@@ -17,11 +17,9 @@ I'm releasing this under the the Community Research and Academic Programming Lic
 Installing
 ----------
 
-You'll need to install cmake, and the boost and blitz libraries to compile the multigrid library. On a Mac the easiest thing to do is use Homebrew (), so that this can be done in one hit with the command `brew install cmake boost blitz`.
+You'll need to install cmake, and the Boost and Blitz++ libraries to compile the multigrid library ([Boost homepage](www.boost.org/), [Blitz++ homepage](http://www.oonumerics.org/blitz/)). On a Mac the easiest thing to do is use Homebrew ([get it here](http://mxcl.github.com/homebrew/), so that this can be done in one hit with the command `brew install cmake boost blitz`.
 
-Once you've installed these dependencies, you can go to the root folder (where this README is located) and run 
-
-	cmake . && make install 
+Once you've installed these dependencies, you can go to the root folder (where this README is located) and run `cmake . && make install`.
 
 ...this should put the library and headers under /usr/local. Feel free to modify the install directory in the CMakeLists.txt file if you want it to go somewhere else.
 
