@@ -1,8 +1,8 @@
-Library name: libmultigrid
-Author: Jesse Robertson, Australian National University
-Date: 17 October 2011
-URL: http://github.com/jess-robertson/multigrid
-Email: my name with domain anu.edu.au
+	Library name: libmultigrid
+	Author: Jesse Robertson, Australian National University
+	Date: 17 October 2011
+	URL: http://github.com/jess-robertson/multigrid
+	Email: my name with domain anu.edu.au
 
 This is a multigrid solver for solving elliptic PDEs using finite differences on a rectangular grid. It uses red-black updating with a user-specified smoother and fully weighted restriction/bilinear interpolation for solution transfer between grids. These are implemented as methods of a solver class (mgrid::LinearMultigrid) so that you don't have to specify too much to get the solver running.
 
