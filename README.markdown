@@ -10,8 +10,6 @@ Unfortunately there isn't much in the way of documentation other than this READM
 
 I'm releasing this under the the Community Research and Academic Programming License (CRAPL: see http://matt.might.net/articles/crapl/ for details). Hopefully things'll work as advertised but if you have any problems then drop me a line and we'll see if we can fix them.
 
-
-
 Installing
 ----------
 
@@ -20,8 +18,6 @@ You'll need to install cmake, and the Boost and Blitz++ libraries to compile the
 Once you've installed these dependencies, you can go to the root folder (where this README is located) and run `cmake . && make install`. This should put the library and headers under `/usr/local`. Feel free to modify the install directory in the CMakeLists.txt file if you want it to go somewhere else.
 
 When building your own script, you can also use the CMake files that are included in the two example directories. These should find the multigrid library and link it into your own executable.
-
-
 
 Specifying your own elliptic PDEs
 ---------------------------------
@@ -68,8 +64,6 @@ The source term is automatically moved between grids using the same restriction/
 
 ... the sourceIsSet attribute lets the class know you've specified this parameter.
 
-
-
 Specifying boundary conditions
 ------------------------------
 
@@ -88,8 +82,6 @@ If your conditions are not homogeneous, you can specify a value using the Bounda
 	const mgrid::BoundaryPoint zeroDirichletCondition = { mgrid::dirichlet, 0.0 };
 
 A one-dimensional blitz array of BoundaryPoints makes an instance of mgrid::Boundary - you can also pass one of these to mgrid::BoundaryConditions::set to set the boundary conditions.
-
-
 
 Specifying solver settings
 --------------------------
@@ -111,9 +103,23 @@ Most of the settings are fairly self-explanatory:
 
 You specify the minimum grid size as the minimum resolution on the smallest side of the grid - the library will adjust the x and z spacings to have as close to the same resolution in both directions as possible using the aspect ratio setting.
 
-
-
 Running the solver
 ------------------
 
 You can run the multigrid solver using the mgrid::LinearMultigrid::multigrid method. There's an optional mgrid::LinearMultigrid::solve method that you can do more complicated stuff with. For example the viscoplastic channel flow example requires a linear elliptic PDE to be solved at each step, and the source term updated from the last solution. The solve method deals with this recalculation of the source term and then calls the multigrid method.
+
+License
+-------
+
+I'm releasing this code for academic use under the [Community Research and Academic Programming License][41]. You can read the terms of this license [here][42]. Specifically, this licence is designed to achieve the following:
+
+> Most open source licenses (1) require source and modifications to be shared with binaries, and (2) absolve authors of legal liability.
+>
+> An open source license for academics has additional needs: (1) it should require that source and modifications used to validate scientific claims be released with those claims; and (2) more importantly, it should absolve authors of shame, embarrassment and ridicule for ugly code.
+>
+> The Author reserves all rights to the Program, except for any rights granted under any additional licenses attached to the Program.
+
+Basically I'm pretty happy to let you use the data and Python scripts for non-commercial/academic/research use, provided you cite this paper when/if you publish your work. However, if this is too restrictive for you then drop me a line and we can have a chat.
+
+[41]: http://matt.might.net/articles/crapl/ "CRAPL license page"     
+[42]: CRAPL_license.html "CRAPL license text"
