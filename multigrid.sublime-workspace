@@ -1,0 +1,453 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"liquid",
+				"liquid_volume_fraction  (variable)"
+			],
+			[
+				"reverse",
+				"reverse  (function)"
+			],
+			[
+				"Interpo",
+				"InterpolatedUnivariateSpline  (class)"
+			],
+			[
+				"data",
+				"data  (variable)"
+			],
+			[
+				"scipy",
+				"scipy  (module)"
+			],
+			[
+				"dta",
+				"data  (variable)"
+			],
+			[
+				"matplotlib",
+				"matplotlib  (module)"
+			],
+			[
+				"numpy",
+				"numpy  (module)"
+			],
+			[
+				"iteritems",
+				"iteritems  (function)"
+			],
+			[
+				"list",
+				"listdir  (function)"
+			],
+			[
+				"splitext",
+				"splitext  (function)"
+			],
+			[
+				"splite",
+				"splitext  (function)"
+			],
+			[
+				"path",
+				"path  (module)"
+			],
+			[
+				"sheet_na",
+				"sheet_names  (function)"
+			],
+			[
+				"p",
+				"petrolog_output_file  (variable)"
+			],
+			[
+				"pr",
+				"petrolog_output_file  (variable)"
+			],
+			[
+				"xlr",
+				"xlrd  (module)"
+			],
+			[
+				"soli",
+				"solidifying"
+			],
+			[
+				"def",
+				"def: Function"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 91.0,
+		"selected_items":
+		[
+			[
+				"lint",
+				"SublimeLinter: Disable Background Linting"
+			],
+			[
+				"lin",
+				"SublimeLinter: Enable Background Linting"
+			],
+			[
+				"lintin",
+				"SublimeLinter: Enable Background Linting"
+			],
+			[
+				"back",
+				"SublimeLinter: Enable Background Linting"
+			],
+			[
+				"linting",
+				"SublimeLinter: Enable Background Linting"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"sub",
+				"SublimeLinter: Enable Load-Save Linting"
+			],
+			[
+				"disa",
+				"SublimeLinter: Disable Background Linting"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"pack",
+				"Package Control: Disable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 728.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jess/Desktop/test.py",
+		"/Users/jess/Developer/MELTS/Mauna Loa 901-8e/melts-liquid.tbl",
+		"/Users/jess/Developer/MELTS/Mauna Loa 901-8e/melts",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/User/Base File.sublime-settings",
+		"/Users/jess/Developer/Flowgo/flowgo.sublime-project",
+		"/Users/jess/Developer/Flowgo/flogo.pdf",
+		"/Users/jess/Developer/Flowgo/information.tex",
+		"/Users/jess/Developer/Flowgo/flowgo/isothermal.py",
+		"/Users/jess/Developer/Flowgo/flowgo/flow/rheology_problem.py",
+		"/Users/jess/Developer/Flowgo/flowgo/flow/splines.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/jess/Developer/Flowgo/flowgo/flow/secants.py",
+		"/Users/jess/Developer/Flowgo/flowgo/flow/setup.py",
+		"/Users/jess/Developer/Flowgo/flowgo/flow/settings.py",
+		"/usr/local/src/macosx_adiabat_1ph_3-1/Morb.melts",
+		"/Users/jess/Developer/Flowgo/flowgo/rheology.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/Base File.sublime-settings",
+		"/Users/jess/Developer/Flowgo/flowgo/flow/__init__.py",
+		"/Users/jess/Developer/Flowgo/setup.py",
+		"/Users/jess/Developer/Flowgo/flowgo/flow/rheology.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/User/Python.sublime-settings",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/Default (OSX).sublime-keymap",
+		"/Users/jess/Developer/Flowgo/flowgo/rheology/__init__.py",
+		"/Users/jess/Developer/Flowgo/flowgo/__init__.py",
+		"/Users/jess/Developer/Flowgo/clean.sh",
+		"/Users/jess/Developer/Flowgo/flowgo.sublime-build",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/jess/Documents/Papers/solidifying/data/experiments/data/all_viscoplastic.csv",
+		"/Users/jess/Documents/Papers/solidifying/cooling_model.tex",
+		"/Users/jess/Documents/Papers/solidifying/solidifying_preamble.tex",
+		"/Users/jess/Documents/Papers/solidifying/solidifying.tex",
+		"/Users/jess/Documents/Papers/solidifying/data/experiments/experiment_plots.py",
+		"/Users/jess/Documents/Papers/solidifying/data/experiments/regime_boundaries.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/Terminal/Default (OSX).sublime-keymap",
+		"/Users/jess/Documents/Papers/solidifying/data/experiments/crust model/model.tex",
+		"/Users/jess/Documents/Papers/solidifying/solidifying.log",
+		"/Users/jess/Documents/Papers/solidifying/solidifying.sublime-project",
+		"/Users/jess/Documents/Papers/solidifying/data/experiments/regime_boundaries old.py",
+		"/Users/jess/Documents/Papers/solidifying/data/experiments/regime_boundaries new.py",
+		"/Users/jess/Documents/Papers/solidifying/data/fluid properties/slurry_property_plots.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/Python/Python.sublime-build",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/SublimeREPL/sublimerepl.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/SublimeREPL/subplimerepl.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/SublimeREPL/repl.py",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/SublimeREPL/README.creole",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/User/LaTeX.sublime-settings",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/Default/Base File.sublime-settings",
+		"/Users/jess/Library/Application Support/Sublime Text 2/Packages/Default/Global.sublime-settings",
+		"/Users/jess/Documents/Papers/solidifying/data/fluid properties/rheology_estimates/Flow B Solutions/mosolov_flow_b"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"include_history":
+		[
+			""
+		],
+		"location_history":
+		[
+			"<open folders>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\\s+",
+			"[0::10]",
+			"pyplot",
+			"\\t",
+			"mass",
+			"\\*\\b",
+			"/",
+			"\\t",
+			"_",
+			" = ",
+			"\\t",
+			"\\s+=\\s+",
+			"*  *",
+			"*",
+			"/",
+			"self\\[",
+			"^\\s+$",
+			"\\s+=\\s+",
+			",\\s",
+			"\\s+=\\s+",
+			"[\\s\\t]$",
+			"shear-solidification ratio",
+			"thermal parameter",
+			"\\tau_{0}",
+			"_figure",
+			"plot",
+			"\\ref{eq",
+			"(\\ref{eq",
+			"crust width fraction",
+			"crust width ratio",
+			"\\lambda_{\\mathrm{con}}",
+			"denton",
+			"\\\\Delta T",
+			"\\\\mathrm\\{conv\\}",
+			"^\\\\\\]$",
+			"^\\\\\\]",
+			"^\\\\\\[",
+			"ratees",
+			"flux",
+			"contour_crust_width",
+			"star",
+			"error",
+			"warning",
+			"\\[",
+			"W_\\{*c\\}*/W",
+			"W_{p}/W",
+			"W_{c}/W"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			", ",
+			"",
+			"matplotlib.pyplot",
+			"    ",
+			"volume",
+			" * ",
+			" / ",
+			"    ",
+			" ",
+			": ",
+			"    ",
+			"= ",
+			"** ",
+			" * ",
+			" / ",
+			"param[",
+			"",
+			"=",
+			"\\nimport ",
+			"=",
+			"",
+			"figure",
+			"crust cover ratio",
+			"\\lambda_{s}",
+			"\\(T_\\{e\\} - T_\\{a\\}\\)",
+			"\\\\mathrm\\{con\\}",
+			"\\\\mathrm\\{conv\\}",
+			"\\\\]\\\\end{linenomath*}",
+			"\\\\end{linenomath*}\\\\]",
+			"\\\\begin{linenomath*}\\\\[",
+			"\\begin{linenomath*}\\[",
+			"rates",
+			"flow rate",
+			"crust_width",
+			"w_{p}",
+			"w_{c}"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"regime",
+				"ata//experiments/regime_boundaries.py"
+			],
+			[
+				"exper",
+				"ata//experiments/experiment_plots.py"
+			],
+			[
+				"viscoplastic",
+				"ata//experiments/data/all_viscoplastic.csv"
+			],
+			[
+				"experime",
+				"ata//experiments/experiment_plots.py"
+			],
+			[
+				"epe",
+				"ata//experiments/experiment_plots.py"
+			],
+			[
+				"regim",
+				"ata//experiments/regime_boundaries.py"
+			],
+			[
+				"ex",
+				"ata//experiments/experiment_plots.py"
+			],
+			[
+				"sol",
+				"solidifying/solidifying.tex"
+			],
+			[
+				"experiment",
+				"ata//experiments/experiment_plots.py"
+			],
+			[
+				"solit",
+				"solidifying/solidifying.tex"
+			],
+			[
+				"soli",
+				"solidifying/solidifying.sublime-project"
+			],
+			[
+				"model",
+				"ata//experiments/crust model/model.tex"
+			],
+			[
+				"solid",
+				"solidifying/solidifying.log"
+			],
+			[
+				"reg",
+				"ata//experiments/regime_boundaries.py"
+			],
+			[
+				"plot",
+				"ata//experiments/experiment_plots.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 152.0,
+	"status_bar_visible": true
+}
