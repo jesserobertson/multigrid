@@ -13,7 +13,12 @@ I'm releasing this under the the Community Research and Academic Programming Lic
 Installing
 ----------
 
-You'll need to install cmake, and the Boost and Blitz++ libraries to compile the multigrid library ([Boost homepage](www.boost.org/), [Blitz++ homepage](http://www.oonumerics.org/blitz/)). On a Mac the easiest thing to do is use Homebrew ([get it here](http://mxcl.github.com/homebrew/)), so that this can be done in one hit with the command `brew install cmake boost blitz`.
+You'll need to install cmake, and the Boost, Blitz++ and netCDF C++ libraries to compile the multigrid library ([Boost is available from here][11], [Blitz++ from here][12], and [the netCDF libraries are available from here][13]). On a Mac the easiest thing to do is use Homebrew ([get it here][14]), so that this can be done in one hit with the command `brew install cmake boost blitz netcdf`.
+
+[11]: www.boost.org/ "Boost homepage"
+[12]: http://www.oonumerics.org/blitz/ "Blitz++ homepage"
+[13]: http://www.unidata.ucar.edu/downloads/netcdf/index.jsp "NetCDF downloads"
+[14]: http://mxcl.github.com/homebrew/ "Homebrew splash page"
 
 Once you've installed these dependencies, you can go to the root folder (where this README is located) and run `cmake . && make install`. This should put the library and headers under `/usr/local`. Feel free to modify the install directory in the CMakeLists.txt file if you want it to go somewhere else.
 
@@ -107,6 +112,26 @@ Running the solver
 ------------------
 
 You can run the multigrid solver using the mgrid::LinearMultigrid::multigrid method. There's an optional mgrid::LinearMultigrid::solve method that you can do more complicated stuff with. For example the viscoplastic channel flow example requires a linear elliptic PDE to be solved at each step, and the source term updated from the last solution. The solve method deals with this recalculation of the source term and then calls the multigrid method.
+
+Output
+------
+
+Solution output is in netCDF format. To specify file names programmatically you can overload the mgrid::LinearMultgrid::filename method. This method takes a string and returns a string with a filename. This makes it easy to insert the current parameters into the output filename when you're running a bunch of solutions at once. To actually write the solution to file you can call the mgrid::LinearMultigrid::write method and pass two arguments: the first integer is the variables to write out ('1' writes out just the solution, '2' writes the solution and its derivatives, and '3' writes out the solution, derviatives and the error between the solution and the differential equation), and the second string is the string that gets passed to the filename method (use this to pass a folder reference if you like).
+
+In the Poisson problem example this is done like so:
+
+	std::string Poisson::filename(std::string root) {
+	    std::ostringstream name;  
+	    name.precision(1);  // Print variables to one decimal place
+	    name << root << "A" << std::fixed << aspect; 
+	    return name.str();
+	} 
+
+and the writing call is
+
+	problem->write(1, "poisson_")
+
+where problem is an instance of Poisson, a subclass of mgrid::LinearMultigrid. This method will write a file `poisson_A<aspect>.nc` where <aspect> is the aspect ratio of the solution.
 
 License
 -------
