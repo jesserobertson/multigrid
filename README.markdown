@@ -131,7 +131,7 @@ and the writing call is
 
 	problem->write(1, "poisson_")
 
-where problem is an instance of Poisson, a subclass of mgrid::LinearMultigrid. This method will write a file `poisson_A<aspect>.nc` where <aspect> is the aspect ratio of the solution.
+where problem is an instance of Poisson, a subclass of mgrid::LinearMultigrid. This method will write a file `poisson_A2.nc` for a problem with an aspect ratio of 2.
 
 License
 -------
