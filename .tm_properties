@@ -1,0 +1,16 @@
+# Excludes and includes
+exclude = "{*.{o,pyc,lot,lof,toc,out,aux,log,make,d,fls,temp,tex.orig},Icon\r,CVS,_darcs,_MTN,\{arch\},blib,*~.nib,CMakeFiles,CMakeCache.txt,*.cmake}"
+include = "{.tm_properties,.htaccess, *.{txt,tex,pdf,jpg,sh}}"
+
+# Variables
+TM_GIT = "/usr/local/bin/git"
+TM_MAKE_FILE         = '${CWD}/Makefile'
+TM_MAKE_TARGET       = '${CWD}/thesis.pdf'
+
+fontName = "Inconsolata"
+fontSize = 14
+
+[ "*.{txt,tex,markdown}" ]
+softWrap = true
+fontName = "Helvetica"
+fontSize = 14
