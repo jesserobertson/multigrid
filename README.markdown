@@ -13,7 +13,7 @@ I'm releasing this under the the Community Research and Academic Programming Lic
 Installing
 ----------
 
-You'll need to install cmake, and the Boost, Blitz++ and netCDF C++ libraries to compile the multigrid library ([Boost is available from here][11], [Blitz++ from here][12], and [the netCDF libraries are available from here][13]). On a Mac the easiest thing to do is use Homebrew ([get it here][14]), so that this can be done in one hit with the command `brew install cmake boost blitz netcdf`.
+You'll need to install cmake, and the Boost, Blitz++ and netCDF C++ libraries to compile the multigrid library ([Boost is available from here][11], [Blitz++ from here][12], and [the netCDF libraries are available from here][13]). On a Mac the easiest thing to do is use Homebrew ([get it here][14]), so that this can be done in one hit with the command `brew install cmake boost blitz netcdf`. On debian the following works: `apt-get install cmake libboost-dev libblitz-dev libnetcdfc++4 libhdf5-openmpi-dev
 
 [11]: www.boost.org/ "Boost homepage"
 [12]: http://www.oonumerics.org/blitz/ "Blitz++ homepage"

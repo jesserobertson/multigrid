@@ -7,14 +7,14 @@
 include(LibFindMacros)
 
 # Dependencies 
-set(MULTIGRID_PREFIX "/usr/local" 
+set(MULTIGRID_PREFIX "/usr/local/" 
     CACHE PATH "Path to search for Multigrid header and library files" )
 
 # ==============
 # = Find Blitz =
 # ==============       
 # Dependencies 
-set( BLITZ_PREFIX "/usr/local" 
+set( BLITZ_PREFIX "/usr/local/" 
     CACHE PATH "Path to search for Blitz++ header and library files" ) 
 
 # Include dir
@@ -75,10 +75,10 @@ libfind_process(NETCDF_CPP)
 # ==================
 # Include dir
 find_path(MULTIGRID_INCLUDE_DIR NAMES multigrid/multigrid.hpp 
-    PATHS ${MULTIGRID_PREFIX})
+    PATHS ${MULTIGRID_PREFIX}/include)
 
 # Finally the library itself
-find_library(MULTIGRID_LIBRARY NAMES multigrid PATHS ${MULTIGRID_PREFIX})
+find_library(MULTIGRID_LIBRARY NAMES multigrid PATHS ${MULTIGRID_PREFIX}/lib)
 
 # Set the include dir variables and the libraries and let libfind_process do
 # the rest. NOTE: Singular variables for this library, plural for libraries
