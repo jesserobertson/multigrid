@@ -13,7 +13,7 @@ I'm releasing this under the the Community Research and Academic Programming Lic
 Installing
 ----------
 
-You'll need to install cmake, and the Boost, Blitz++ and netCDF C++ libraries to compile the multigrid library ([Boost is available from here][11], [Blitz++ from here][12], and [the netCDF libraries are available from here][13]). On a Mac the easiest thing to do is use Homebrew ([get it here][14]), so that this can be done in one hit with the command `brew install cmake boost blitz netcdf`. On debian the following works: `apt-get install cmake libboost-dev libblitz-dev libnetcdfc++4 libhdf5-openmpi-dev
+You'll need to install cmake, and the Boost, Blitz++ and netCDF C++ libraries to compile the multigrid library ([Boost is available from here][11], [Blitz++ from here][12], and [the netCDF libraries are available from here][13]). On a Mac the easiest thing to do is use Homebrew ([get it here][14]), so that this can be done in one hit with the command `brew install cmake boost blitz netcdf`. On debian the following works: `apt-get install cmake libboost-dev libblitz-dev libnetcdfc++4 libhdf5-openmpi-dev`.
 
 [11]: www.boost.org/ "Boost homepage"
 [12]: http://www.oonumerics.org/blitz/ "Blitz++ homepage"
@@ -36,7 +36,7 @@ solution[level].dzz(i, j)
 
 ...which would give you a finite difference approximation to the second derivative in the x and z directions respectively. These finite differences also take the location of the point into account, so if you're near a boundary they will automatically use forward or backward differences as required.
 
-For example, to solve the Poisson equation for a solution u_h on a grid with spacing h = (hx, hz), with a source term f_h, we have the following differential operator:
+For example, to solve the Poisson equation for a solution $u_h$ on a grid with spacing $h = (hx, hz)$, with a source term $f_h$, we have the following differential operator:
 
 $$
 L(u_h) = d^2u/dx^2 + d^2u/dz^2
@@ -109,12 +109,12 @@ Most of the settings are fairly self-explanatory:
 
 ```c++
 struct Settings { 
-    double aspectRatio; 			# Aspect ratio of the grids
-    int numberOfGrids; 				# Total number of grids
-    int minimumResolution;			# Resolution on the coarsest grid
+    double aspectRatio; 		# Aspect ratio of the grids
+    int numberOfGrids; 			# Total number of grids
+    int minimumResolution;		# Resolution on the coarsest grid
     double residualTolerance;		# Stopping tolerance for solver
-    int maximumIterations;			# Maximum allowable iterations for the solver
-    CycleType mgCycleType;			# Either mgrid::wCycle or mgrid::vCycle
+    int maximumIterations;		# Maximum allowable iterations for the solver
+    CycleType mgCycleType;		# Either mgrid::wCycle or mgrid::vCycle
     unsigned long preMGRelaxIter;	# Number of relaxation iterations on way down
     unsigned long postMGRelaxIter;	# Number of relaxation iterations on way back up
 };
