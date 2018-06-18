@@ -1,8 +1,8 @@
-	Library name: libmultigrid
-	Author: Jesse Robertson, Australian National University
-	Date: 17 October 2011
-	URL: http://github.com/jess-robertson/multigrid
-	Email: my name with domain anu.edu.au
+# libmultigrid
+Author: Jesse Robertson, Australian National University
+Date: 17 October 2011
+URL: http://github.com/jesserobertson/multigrid
+Email: my name with domain csiro.au
 
 This is a multigrid solver for solving elliptic PDEs using finite differences on a rectangular grid. It uses red-black updating with a user-specified smoother and fully weighted restriction/bilinear interpolation for solution transfer between grids. These are implemented as methods of a solver class (mgrid::LinearMultigrid) so that you don't have to specify too much to get the solver running.
 
@@ -29,43 +29,53 @@ Specifying your own elliptic PDEs
 
 You can use this library by subclassing from the mgrid::LinearMultigrid class. You need to specify a differential operator, and a smoothing operator which will be specific to your given PDE. These functions are given a multigrid level, and i and j indexes which they can use to calculate the smoothing step. To make specifying these things easier, the solution attribute also implements finite differences of the specified order in the form:
 
-	solution[level].dxx(i, j)
-	solution[level].dzz(i, j)
+```c++
+solution[level].dxx(i, j)
+solution[level].dzz(i, j)
+```
 
 ...which would give you a finite difference approximation to the second derivative in the x and z directions respectively. These finite differences also take the location of the point into account, so if you're near a boundary they will automatically use forward or backward differences as required.
 
 For example, to solve the Poisson equation for a solution u_h on a grid with spacing h = (hx, hz), with a source term f_h, we have the following differential operator:
 
+$$
 L(u_h) = d^2u/dx^2 + d^2u/dz^2
+$$
 
 and the following Gauss-Seidel update step as a smoother:
 
+$$
 S(u_h) = u_h(i+1, j)((u_h(i+1, j) + u_h(i-1, j))*/(hx^2)
         + (u_h(i, j+1) + u_h(i, j-1))/(hz^2) 
         - f_h(i, j))/(2*(hx + hz))
+$$
 
 These are implemented in the Poisson example as
 
-	inline double differential_operator(mgrid::Level level, int i, int j) {
-	    return solution[level].dxx(i, j) + solution[level].dzz(i, j);
-	};
-	inline void Poisson::relaxation_updater(mgrid::Level level, int i, int j) { 
-	    const double hx = solution[level].spacing(0);
-	    const double hz = solution[level].spacing(1);
-	    const double xxfactor = 1/(hx*hx);
-	    const double zzfactor = 1/(hz*hz);
-	    solution[level](i, j) = 
-	        ((solution[level](i+1, j) + solution[level](i-1, j))*xxfactor
-	        + (solution[level](i, j+1) + solution[level](i, j-1))*zzfactor 
-	        - source[level](i, j))/(2*(xxfactor + zzfactor));
-	};
+```c++
+inline double differential_operator(mgrid::Level level, int i, int j) {
+    return solution[level].dxx(i, j) + solution[level].dzz(i, j);
+};
+inline void Poisson::relaxation_updater(mgrid::Level level, int i, int j) { 
+    const double hx = solution[level].spacing(0);
+    const double hz = solution[level].spacing(1);
+    const double xxfactor = 1/(hx*hx);
+    const double zzfactor = 1/(hz*hz);
+    solution[level](i, j) = 
+	((solution[level](i+1, j) + solution[level](i-1, j))*xxfactor
+	+ (solution[level](i, j+1) + solution[level](i, j-1))*zzfactor 
+	- source[level](i, j))/(2*(xxfactor + zzfactor));
+};
+```
 
 As you can see, you can get the spacing size from the current level of the solution. The solution and source arrays are stored as attributes containing vectors of grids, arranged from fine to coarse, and are called `solution` and `source` respectively. You shouldn't need to bother with the order too much, just pass the supplied level through.
 
 The source term is automatically moved between grids using the same restriction/prolongation operators as used for the solutions. To make it wasier to specify initial conditions and a source term, the mgrid::LinearMultigrid class also contains finestLevel and coarsestLevel attributes, with the index of the finest and coarsest grid level respectively. You can just specify an array which gives the source function during construction of the class - everything that works to set the values in a Blitz array will work here. Here's how the Poisson example does it:
 
-    source[finestLevel] = -1.0; 
-    sourceIsSet = true;   
+```c++
+source[finestLevel] = -1.0; 
+sourceIsSet = true;   
+```
 
 ... the sourceIsSet attribute lets the class know you've specified this parameter.
 
@@ -76,15 +86,19 @@ Boundary conditions can be set in the initialisation routine of your solver clas
 
 Here's how it's done for the Poisson example, with two homogeneous Dirichlet and two Neumann conditions
 
-	// Set boundary conditions for velocity array 
-	solution.boundaryConditions.set(mgrid::leftBoundary,   mgrid::zeroNeumannCondition);
-	solution.boundaryConditions.set(mgrid::rightBoundary,  mgrid::zeroDirichletCondition);
-	solution.boundaryConditions.set(mgrid::topBoundary,    mgrid::zeroNeumannCondition);    
-	solution.boundaryConditions.set(mgrid::bottomBoundary, mgrid::zeroDirichletCondition); 
+```c++
+// Set boundary conditions for velocity array 
+solution.boundaryConditions.set(mgrid::leftBoundary,   mgrid::zeroNeumannCondition);
+solution.boundaryConditions.set(mgrid::rightBoundary,  mgrid::zeroDirichletCondition);
+solution.boundaryConditions.set(mgrid::topBoundary,    mgrid::zeroNeumannCondition);    
+solution.boundaryConditions.set(mgrid::bottomBoundary, mgrid::zeroDirichletCondition); 
+```
 
 If your conditions are not homogeneous, you can specify a value using the BoundaryPoint class. For example, the conditions above were specified as:
 
-	const mgrid::BoundaryPoint zeroDirichletCondition = { mgrid::dirichlet, 0.0 };
+```c++
+const mgrid::BoundaryPoint zeroDirichletCondition = { mgrid::dirichlet, 0.0 };
+```
 
 A one-dimensional blitz array of BoundaryPoints makes an instance of mgrid::Boundary - you can also pass one of these to mgrid::BoundaryConditions::set to set the boundary conditions.
 
@@ -93,16 +107,18 @@ Specifying solver settings
 
 Most of the settings are fairly self-explanatory:
 
-	struct Settings { 
-	    double aspectRatio; 			# Aspect ratio of the grids
-	    int numberOfGrids; 				# Total number of grids
-	    int minimumResolution;			# Resolution on the coarsest grid
-	    double residualTolerance;		# Stopping tolerance for solver
-	    int maximumIterations;			# Maximum allowable iterations for the solver
-	    CycleType mgCycleType;			# Either mgrid::wCycle or mgrid::vCycle
-	    unsigned long preMGRelaxIter;	# Number of relaxation iterations on way down
-	    unsigned long postMGRelaxIter;	# Number of relaxation iterations on way back up
-	};
+```c++
+struct Settings { 
+    double aspectRatio; 			# Aspect ratio of the grids
+    int numberOfGrids; 				# Total number of grids
+    int minimumResolution;			# Resolution on the coarsest grid
+    double residualTolerance;		# Stopping tolerance for solver
+    int maximumIterations;			# Maximum allowable iterations for the solver
+    CycleType mgCycleType;			# Either mgrid::wCycle or mgrid::vCycle
+    unsigned long preMGRelaxIter;	# Number of relaxation iterations on way down
+    unsigned long postMGRelaxIter;	# Number of relaxation iterations on way back up
+};
+```
 
 ...although a couple need a bit more explanation. The library will work out all the grid sizes based on your minimum grid size and the total number of grids by simply doubling the resolution in both the x and z direction with each grid. 
 
@@ -120,16 +136,20 @@ Solution output is in netCDF format. To specify file names programmatically you 
 
 In the Poisson problem example this is done like so:
 
-	std::string Poisson::filename(std::string root) {
-	    std::ostringstream name;  
-	    name.precision(1);  // Print variables to one decimal place
-	    name << root << "A" << std::fixed << aspect; 
-	    return name.str();
-	} 
+```c++
+std::string Poisson::filename(std::string root) {
+    std::ostringstream name;  
+    name.precision(1);  // Print variables to one decimal place
+    name << root << "A" << std::fixed << aspect; 
+    return name.str();
+} 
+```
 
 and the writing call is
 
-	problem->write(1, "poisson_")
+```c++
+problem->write(1, "poisson_");
+```
 
 where problem is an instance of Poisson, a subclass of mgrid::LinearMultigrid. This method will write a file `poisson_A2.nc` for a problem with an aspect ratio of 2.
 
